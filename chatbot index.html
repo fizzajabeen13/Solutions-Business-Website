@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chat Support - Solutions Constructions and HVAC</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Chatbot popup */
+    .chatbot-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 320px;
+      max-height: 500px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 2000;
+      display: none;
+    }
+    .chatbot-header {
+      background: #0F3460;
+      color: #fff;
+      padding: 10px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chatbot-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+    .chatbot-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+    .chatbot-input input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      font-size: 14px;
+    }
+    .chatbot-input button {
+      border: none;
+      background: #1aa96b;
+      color: #fff;
+      padding: 0 16px;
+      cursor: pointer;
+    }
+    /* Toggle button */
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1aa96b;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      cursor: pointer;
+      font-size: 24px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+      z-index: 1500;
+    }
+    /* FAQ accordion */
+    .faq-section {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .faq-item {
+      background: #fff;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .faq-question {
+      padding: 14px;
+      cursor: pointer;
+      font-weight: bold;
+      border-bottom: 1px solid #eee;
+    }
+    .faq-answer {
+      display: none;
+      padding: 14px;
+      font-size: 14px;
+      color: #333;
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="brand">
+      <a class="brand-link" href="index.html">Solutions Constructions and HVAC</a>
+    </div>
+  </header>
+
+  <main style="padding:28px;max-width:900px;margin:0 auto">
+    <h1>Support Center</h1>
+    <p>Chat with our AI-powered assistant or browse the FAQs below.</p>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">Do you provide HVAC installation for commercial buildings?</div>
+        <div class="faq-answer">Yes, we specialize in both residential and commercial HVAC system installation with full support.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">How often should HVAC systems be serviced?</div>
+        <div class="faq-answer">We recommend servicing your HVAC system at least once a year for efficiency and safety.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Do you offer emergency repair services?</div>
+        <div class="faq-answer">Yes, our team provides 24/7 emergency HVAC and repair services.</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; 2025 Solutions Constructions and HVAC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Chatbot toggle -->
+  <button class="chatbot-toggle" id="chatToggle">💬</button>
+
+  <!-- Chatbot window -->
+  <div class="chatbot-widget" id="chatbot">
+    <div class="chatbot-header">
+      AI Assistant
+      <button onclick="toggleChat()" style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer">✖</button>
+    </div>
+    <div class="chatbot-messages" id="chatMessages">
+      <div><strong>Bot:</strong> Hello! How can I help you today?</div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatInput" placeholder="Type your message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    // Toggle chatbot popup
+    const chatbot = document.getElementById("chatbot");
+    const toggleBtn = document.getElementById("chatToggle");
+
+    function toggleChat() {
+      chatbot.style.display = chatbot.style.display === "flex" ? "none" : "flex";
+    }
+    toggleBtn.addEventListener("click", toggleChat);
+
+    // Chatbot simple AI logic
+    function sendMessage() {
+      const input = document.getElementById("chatInput");
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      const messages = document.getElementById("chatMessages");
+      messages.innerHTML += `<div><strong>You:</strong> ${msg}</div>`;
+
+      let reply = "I'm not sure, but our team will contact you soon.";
+      if (msg.toLowerCase().includes("service")) reply = "We provide installation, repair, and maintenance HVAC services.";
+      if (msg.toLowerCase().includes("cost")) reply = "Our pricing depends on the project. Can you tell me if it's residential or commercial?";
+      if (msg.toLowerCase().includes("contact")) reply = "You can reach us at support@hvac.com or call +92 300 1234567.";
+
+      setTimeout(() => {
+        messages.innerHTML += `<div><strong>Bot:</strong> ${reply}</div>`;
+        messages.scrollTop = messages.scrollHeight;
+      }, 500);
+
+      input.value = "";
+    }
+
+    // FAQ accordion
+    document.querySelectorAll(".faq-question").forEach(q => {
+      q.addEventListener("click", () => {
+        q.parentElement.classList.toggle("active");
+      });
+    });
+  </script>
+</body>
+</html>
