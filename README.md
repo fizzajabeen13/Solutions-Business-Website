@@ -8,6 +8,24 @@ Solutions is a professional business website developed to help companies establi
 
 A business-focused website featuring service sections, company information, contact forms, and professional branding elements.
 
+## 📸 Screenshots
+
+| Homepage                      | Services                      |
+| ----------------------------- | ----------------------------- |
+| ![](Screenshots/Homepage.PNG) | ![](Screenshots/Services.PNG) |
+
+| Projects                      | Book Now                        |
+| ----------------------------- | ------------------------------- |
+| ![](Screenshots/Projects.PNG) | ![](Screenshots/Book%20Now.PNG) |
+
+| Contact Form                        | Testimonials & FAQs                            |
+| ----------------------------------- | ---------------------------------------------- |
+| ![](Screenshots/Contact%20Form.PNG) | ![](Screenshots/Testimonials%20and%20FAQs.PNG) |
+
+| Mobile Responsiveness               |
+| ----------------------------------- |
+| ![](Screenshots/Responsiveness.PNG) |
+
 ## Features
 
 * Professional business design
@@ -16,7 +34,7 @@ A business-focused website featuring service sections, company information, cont
 * Contact and inquiry forms
 * Responsive layout
 * Modern UI/UX
-* Lead generation focused structure
+* Lead generation-focused structure
 
 ## Technologies Used
 
@@ -25,10 +43,13 @@ A business-focused website featuring service sections, company information, cont
 * JavaScript
 
 ## Live Demo
+
 https://solutions-5jec.vercel.app/
+
+## GitHub Repository
+https://github.com/fizzajabeen13/Solutions-Business-Website
 
 ## Author
 
-Fizza Jabeen
-
+**Fizza Jabeen**
 AI & Full Stack Developer
